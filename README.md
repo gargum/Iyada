@@ -6,7 +6,7 @@
 
 * Keyboard Maintainer: [Gareth Gummow](https://github.com/gargum)
 
-This device is powered by two RP2040 Microcontrollers and QMK Firmware.
+This device is powered by QMK Firmware running on two RP2040 Microcontrollers.
 
 To flash the firmware for it, simply copy the kiraibuilds/iyada directory to the ~/qmk_firmware/keyboards locally on your machine before following one of the make examples included in the appropriate Readme file.
 
