@@ -28,7 +28,7 @@ STENO_ENABLE = no								# Stenotype output
 MIDI_ENABLE = no								# MIDI output
 AUDIO_ENABLE = yes 								# Audio output
 UNICODE_ENABLE = no								# Unicode output
-JOYSTICK_ENABLE = no 							# Gamepad & Joystick output
+JOYSTICK_ENABLE = yes 							# Gamepad & Joystick output
 JOYSTICK_DRIVER = digital					    # Gamepad & Joystick driver
   
 POINTING_DEVICE_ENABLE = yes					# Mouse sensor input toggle
