@@ -337,6 +337,6 @@ tap_dance_action_t tap_dance_actions[] = {
   #endif
   #ifdef STENO_ENABLE
   ,
-  [STE_DANCE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ste_finished, ste_reset),
+  [STE_DANCE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ste_finished, ste_reset)
   #endif
 };
