@@ -26,6 +26,8 @@
 #define SERIAL_USART_TIMEOUT 20
 #undef USB_SUSPEND_WAKEUP_DELAY
 #define USB_SUSPEND_WAKEUP_DELAY 200
+#undef USB_MAX_POWER_CONSUMPTION
+#define USB_MAX_POWER_CONSUMPTION USB_CONFIG_POWER_MA(950)
 
 // for all I2C peripherals
 #undef RP_I2C_USE_I2C1
@@ -57,10 +59,6 @@
 #define RP_PWM_USE_PWM0 TRUE
 #undef AUDIO_PIN
 #define AUDIO_PIN GP16
-#if HAPTIC_DRIVER != solenoid
-#undef AUDIO_PIN_ALT
-#define AUDIO_PIN_ALT GP10
-#endif
 #undef AUDIO_PWM_DRIVER
 #define AUDIO_PWM_DRIVER PWMD0
 #undef AUDIO_PWM_CHANNEL
@@ -68,7 +66,7 @@
 #undef AUDIO_INIT_DELAY
 #define AUDIO_INIT_DELAY
 #undef SPEAKER_SHUTDOWN
-#define SPEAKER_SHUTDOWN GP24
+#define SPEAKER_SHUTDOWN GP19
 #endif
 
 // for all rotary and scroll encoders
