@@ -63,12 +63,12 @@ BCK_DANCE
 // Tap dance function declarations
 td_state_t cur_dance (tap_dance_state_t *state);
 td_state_t rig_dance (tap_dance_state_t *state);
-void x_finished (tap_dance_state_t *state, void *user_data);
-void y_finished (tap_dance_state_t *state, void *user_data);
-void z_finished (tap_dance_state_t *state, void *user_data);
-void x_reset (tap_dance_state_t *state, void *user_data);
-void y_reset (tap_dance_state_t *state, void *user_data);
-void z_reset (tap_dance_state_t *state, void *user_data);
+void esc_finished (tap_dance_state_t *state, void *user_data);
+void grv_finished (tap_dance_state_t *state, void *user_data);
+void bck_finished (tap_dance_state_t *state, void *user_data);
+void esc_reset (tap_dance_state_t *state, void *user_data);
+void grv_reset (tap_dance_state_t *state, void *user_data);
+void bck_reset (tap_dance_state_t *state, void *user_data);
 #endif
 
 // Keyboard layout
@@ -92,7 +92,7 @@ KC_TRNS,       KC_TRNS,                      KC_TRNS,       KC_TRNS,       KC_TR
 KC_TRNS,       RGB_VAD,       AC_TOGG,       KC_MS_U,       AS_TOGG,       DM_REC1,       DT_UP,             DT_DOWN,       KC_ACL0,       KC_BTN1,       KC_UP,         KC_BTN2,       RGB_VAI,       KC_TRNS,
 KC_TRNS,       RGB_TOG,       KC_MS_L,       KC_MS_D,       KC_MS_R,       DM_RSTP,       KC_TRNS,           KC_TRNS,       KC_ACL1,       KC_LEFT,       KC_DOWN,       KC_RGHT,       AU_TOGG,       KC_TRNS,
 KC_TRNS,       HF_PREV,       HF_COND,       HF_TOGG,       CW_TOGG,       DM_PLY1,       KC_TRNS,           KC_TRNS,       KC_ACL2,       QK_LOCK,       HF_RST,        HF_CONU,       HF_NEXT,       KC_TRNS,
-KC_TRNS,       KC_TRNS,                      KC_TRNS,       KC_TRNS,       TT(_MOUSE),    KC_TRNS,           KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,                      KC_TRNS,       KC_TRNS
+KC_TRNS,       KC_TRNS,                      KC_TRNS,       KC_TRNS,       TO(_SYMBOL),   KC_TRNS,           KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,                      KC_TRNS,       KC_TRNS
 ) 
 #ifdef JOYSTICK_ENABLE
 ,
@@ -116,6 +116,70 @@ STN_ST2,       STN_ST1,                      STN_A,         STN_O,         STN_S
 )  
 #endif
 };
+
+
+
+
+#ifdef RGBLIGHT_LAYERS
+const rgblight_segment_t PROGMEM my_qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 30, HSV_WHITE}
+);
+const rgblight_segment_t PROGMEM my_symbol_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 30, HSV_AZURE}
+);
+const rgblight_segment_t PROGMEM my_mouse_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 30, HSV_MAGENTA}
+);
+#ifdef JOYSTICK_ENABLE
+const rgblight_segment_t PROGMEM my_games_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 30, HSV_PURPLE}
+);
+#endif
+#ifdef STENO_ENABLE
+const rgblight_segment_t PROGMEM my_steno_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 30, HSV_CHARTREUSE}
+);
+#endif
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    my_qwerty_layer,
+    my_symbol_layer,
+    my_mouse_layer
+    #ifdef JOYSTICK_ENABLE
+    ,
+    my_games_layer
+    #endif
+    #ifdef STENO_ENABLE
+    ,
+    my_steno_layer
+    #endif
+);
+
+void keyboard_post_init_user(void) {
+    rgblight_layers = my_rgb_layers;
+}
+#endif
+layer_state_t default_layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, _QWERTY));
+    return state;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+
+    rgblight_set_layer_state(1, layer_state_cmp(state, _SYMBOL));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _MOUSE));
+    #ifdef JOYSTICK_ENABLE
+    rgblight_set_layer_state(3, layer_state_cmp(state, _GAMES));
+    #endif
+    #ifdef STENO_ENABLE
+    #ifndef JOYSTICK_ENABLE
+    rgblight_set_layer_state(3, layer_state_cmp(state, _STENO));
+    #endif
+    #ifdef JOYSTICK_ENABLE
+    rgblight_set_layer_state(4, layer_state_cmp(state, _STENO));
+    #endif
+    #endif
+    return state;
+}
 
 #ifdef JOYSTICK_ENABLE
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -292,39 +356,6 @@ combo_t key_combos [] = {
 
 #endif
 
-#ifdef RGBLIGHT_LAYERS
-const rgblight_segment_t PROGMEM my_qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 30, HSV_WHITE}
-);
-const rgblight_segment_t PROGMEM my_symbol_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 30, HSV_AZURE}
-);
-const rgblight_segment_t PROGMEM my_mouse_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 30, HSV_MAGENTA}
-);
-
-const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    my_qwerty_layer,
-    my_symbol_layer,
-    my_mouse_layer
-);
-
-void keyboard_post_init_user(void) {
-    rgblight_layers = my_rgb_layers;
-}
-
-layer_state_t default_layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, _QWERTY));
-    return state;
-}
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(1, layer_state_cmp(state, _SYMBOL));
-    rgblight_set_layer_state(2, layer_state_cmp(state, _MOUSE));
-    return state;
-}
-#endif
-
 #ifdef TAP_DANCE_ENABLE
 
 // Converting the subtype of tap event that has been detected into a number
@@ -359,7 +390,7 @@ td_state_t rig_dance(tap_dance_state_t *state) {
   } else return TD_UNKNOWN;
 }
 
-void x_finished (tap_dance_state_t *state, void *user_data) {
+void esc_finished (tap_dance_state_t *state, void *user_data) {
   xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
     case TD_SINGLE_TAP: register_code(KC_TAB); break;
@@ -376,7 +407,7 @@ void x_finished (tap_dance_state_t *state, void *user_data) {
   }
 };
 
-void x_reset (tap_dance_state_t *state, void *user_data) {
+void esc_reset (tap_dance_state_t *state, void *user_data) {
   switch (xtap_state.state) {
     case TD_SINGLE_TAP: unregister_code(KC_TAB); break;
     case TD_SINGLE_HOLD: unregister_code(KC_LALT); break;
@@ -390,15 +421,9 @@ void x_reset (tap_dance_state_t *state, void *user_data) {
   xtap_state.state = TD_NONE;
 }
 
-//instanalize an instance of 'tap' for the 'y' tap dance.
-static td_tap_t ytap_state = {
-  .is_press_action = true,
-  .state = TD_NONE
-};
-
-void y_finished (tap_dance_state_t *state, void *user_data) {
- ytap_state.state = rig_dance(state);
-  switch (ytap_state.state) {
+void grv_finished (tap_dance_state_t *state, void *user_data) {
+ xtap_state.state = rig_dance(state);
+  switch (xtap_state.state) {
     case TD_SINGLE_TAP: register_code(KC_BSLS); break;
     case TD_SINGLE_HOLD: register_code(KC_RALT); break;
     case TD_DOUBLE_TAP: register_code(KC_GRV); break;
@@ -410,8 +435,8 @@ void y_finished (tap_dance_state_t *state, void *user_data) {
  }
 };
 
-void y_reset (tap_dance_state_t *state, void *user_data) {
-  switch (ytap_state.state) {
+void grv_reset (tap_dance_state_t *state, void *user_data) {
+  switch (xtap_state.state) {
     case TD_SINGLE_TAP: unregister_code16(KC_BSLS); break;
     case TD_SINGLE_HOLD: unregister_mods(KC_RALT); break;
     case TD_DOUBLE_TAP: unregister_code(KC_GRV); break;
@@ -421,12 +446,12 @@ void y_reset (tap_dance_state_t *state, void *user_data) {
     case TD_UNKNOWN: break;
     default: break;
   }
-  ytap_state.state = TD_NONE;
+  xtap_state.state = TD_NONE;
 }
 
-void z_finished (tap_dance_state_t *state, void *user_data) {
- ytap_state.state = rig_dance(state);
-  switch (ytap_state.state) {
+void bck_finished (tap_dance_state_t *state, void *user_data) {
+ xtap_state.state = rig_dance(state);
+  switch (xtap_state.state) {
     case TD_SINGLE_TAP: register_code(KC_BSPC); break;
     case TD_SINGLE_HOLD: register_code(KC_LCTL); register_code(KC_BSPC); break;
     case TD_DOUBLE_TAP: register_code(KC_BSPC); unregister_code(KC_BSPC); register_code(KC_BSPC); break;
@@ -438,8 +463,8 @@ void z_finished (tap_dance_state_t *state, void *user_data) {
  }
 };
 
-void z_reset (tap_dance_state_t *state, void *user_data) {
-  switch (ytap_state.state) {
+void bck_reset (tap_dance_state_t *state, void *user_data) {
+  switch (xtap_state.state) {
     case TD_SINGLE_TAP: unregister_code(KC_BSPC); break;
     case TD_SINGLE_HOLD: unregister_code(KC_LCTL); unregister_code(KC_BSPC); break;
     case TD_DOUBLE_TAP: unregister_code(KC_BSPC); break;
@@ -449,15 +474,14 @@ void z_reset (tap_dance_state_t *state, void *user_data) {
     case TD_UNKNOWN: break;
     default: break;
   }
-  ytap_state.state = TD_NONE;
+  xtap_state.state = TD_NONE;
 }
-
 
 // define `ACTION_TAP_DANCE_FN_ADVANCED()` for each tapdance keycode, passing in `finished` and `reset` functions
 tap_dance_action_t tap_dance_actions[] = {
-  [ESC_DANCE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset),
-  [GRV_DANCE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, y_finished, y_reset),
-  [BCK_DANCE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, z_finished, z_reset)
+  [ESC_DANCE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset),
+  [GRV_DANCE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, grv_finished, grv_reset),
+  [BCK_DANCE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, bck_finished, bck_reset)
 };
 
 #endif
