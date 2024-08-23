@@ -1,25 +1,31 @@
 /*
 This file exists primarily to allow for more advanced Cirque/Pointer configuration options.
 */
+
 #include QMK_KEYBOARD_H
 #include <iyada.h>
 #include <ch.h>
 #include <hal.h>
 #include "joystick.h"
+#include "drivers/sensors/cirque_pinnacle.h"
 
 // Joysticks - Dual joystick initialization
 #ifdef JOYSTICK_ENABLE
 joystick_config_t joystick_axes[JOYSTICK_AXIS_COUNT] = {
-    JOYSTICK_AXIS_VIRTUAL, // Left Stick, X
-    JOYSTICK_AXIS_VIRTUAL, // Left Stick, Y
-    JOYSTICK_AXIS_VIRTUAL, // Right Stick, X
-    JOYSTICK_AXIS_VIRTUAL  // Right Stick, Y
+    JOYSTICK_AXIS_VIRTUAL, // 0 - Left Stick, X
+    JOYSTICK_AXIS_VIRTUAL, // 1 - Left Stick, Y
+    JOYSTICK_AXIS_VIRTUAL, // 2 - Right Stick, X
+    JOYSTICK_AXIS_VIRTUAL  // 3 - Right Stick, Y
 };
+
+int16_t JOYSTICK_SPEED = 5;
+
 #endif
 // Pointers - Dual pointer initialization
 #ifdef POINTING_DEVICE_COMBINED
 report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, report_mouse_t right_report) {
 
+    /* Inverting the Scroll Wheel on the right-hand side */
     right_report.v = right_report.h;
     right_report.h = right_report.v;     
 
@@ -34,44 +40,25 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
     right_report.buttons &= ~MOUSE_BTN1;
     right_report.buttons &= ~MOUSE_BTN2;
     }
+ 
 #ifdef JOYSTICK_ENABLE
-    int16_t left_x_val = left_report.x;
-    uint8_t left_x_axis = joystick_read_axis(0);
-    int16_t left_y_val = left_report.y;
-    uint8_t left_y_axis = joystick_read_axis(1);
-    int16_t right_x_val = right_report.x;
-    uint8_t right_x_axis = joystick_read_axis(2);
-    int16_t right_y_val = right_report.y;
-    uint8_t right_y_axis = joystick_read_axis(3);
-
     if(left_report.x != 0) {
-        left_x_val += left_report.x;
-        left_x_axis += joystick_read_axis(0);
-        
-        joystick_set_axis(0, +left_x_axis+left_x_val);
+        joystick_set_axis(0, +left_report.x+(JOYSTICK_SPEED*joystick_read_axis(0)));
     }
     if(left_report.y != 0) {
-        left_y_val += left_report.y;
-        left_y_axis += joystick_read_axis(1);
-        
-        joystick_set_axis(1, +left_y_axis+left_y_val);
+        joystick_set_axis(1, +left_report.y+(JOYSTICK_SPEED*joystick_read_axis(1)));
     }
     if(right_report.x != 0) {
-        right_x_val += right_report.x;
-        right_x_axis += joystick_read_axis(2);
-        
-        joystick_set_axis(2, +right_x_axis+right_x_val);
+        joystick_set_axis(2, +right_report.x+(JOYSTICK_SPEED*joystick_read_axis(2)));
     }
     if(right_report.y != 0) {
-        right_y_val += right_report.y;
-        right_y_axis += joystick_read_axis(3);
-        
-        joystick_set_axis(3, +right_y_axis+right_y_val);
-    }
+        joystick_set_axis(3, +right_report.y+(JOYSTICK_SPEED*joystick_read_axis(3)));
+    } 
 #endif
     return pointing_device_combine_reports(left_report, right_report);
 }
 #endif
+
 // Encoders - Behaviour settings
 #ifdef ENCODER_ENABLE
 bool encoder_update_kb(uint8_t index, bool clockwise) {
