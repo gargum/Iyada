@@ -59,44 +59,6 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, re
 }
 #endif
 
-// Encoders - Behaviour settings
-#ifdef ENCODER_ENABLE
-bool encoder_update_kb(uint8_t index, bool clockwise) {
-    if (!encoder_update_user(index, clockwise)) {
-      return false; /* Don't process further events if user function exists and returns false */
-    }
-    if (index == 0) { /* First encoder */
-        if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
-            tap_code(KC_VOLU);
-        }
-    } else if (index == 1) { /* Second encoder */
-        if (clockwise) {
-            tap_code(KC_WH_D);
-        } else {
-            tap_code(KC_WH_U);
-        }
-    } else if (index == 2) { /* First encoder */
-        if (clockwise) {
-            tap_code(KC_WH_L);
-        } else {
-            tap_code(KC_WH_R);
-        }
-    } else if (index == 3) { /* Second encoder */
-        if (clockwise) {
-            register_code(KC_LCTL);
-            tap_code(KC_PGUP);
-            unregister_code(KC_LCTL);
-        } else {
-            register_code(KC_LCTL);
-            tap_code(KC_PGDN);
-            unregister_code(KC_LCTL);
-        }
-    }
-    return true;
-}
-#endif
 // Audio shutdown pin - Initialization
 #ifdef AUDIO_ENABLE
 void keyboard_pre_init_kb(void) {
