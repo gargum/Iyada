@@ -18,9 +18,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Setting which half is master
 #define EE_HANDS
+
 // Setting behaviour for Tap Dance
 #define TAPPING_TERM 185
 #define TAPPING_TOGGLE 1
+
 // for split keyboard initialization
 #define SPLIT_LAYOUT
 #define SPLIT_USB_DETECT
@@ -36,17 +38,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPLIT_LED_STATE_ENABLE
 #define SPLIT_WATCHDOG_ENABLE
 #define SPLIT_WATCHDOG_TIMEOUT 3000
+
 // Pointer (Cirque Pinnacle) initialization settings
 #ifdef POINTING_DEVICE_ENABLE
 #define MOUSE_EXTENDED_REPORT
 #define POINTING_DEVICE_COMBINED
 #define POINTING_DEVICE_TASK_THROTTLE_MS 10
-#define CIRQUE_PINNACLE_ATTENUATION EXTREG__TRACK_ADCCONFIG__ADC_ATTENUATE_4X
-#define CIRQUE_PINNACLE_CIRCULAR_SCROLL_ENABLE
 #define CIRQUE_PINNACLE_DIAMETER_MM 40
-#define CIRQUE_PINNACLE_TAP_ENABLE
 #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
+#define CIRQUE_PINNACLE_ATTENUATION EXTREG__TRACK_ADCCONFIG__ADC_ATTENUATE_4X
+#define CIRQUE_PINNACLE_TIMEOUT 20
+#define CIRQUE_PINNACLE_TAP_ENABLE
+#define CIRQUE_PINNACLE_CIRCULAR_SCROLL_ENABLE
 #endif
+
 // RGB initialization settings
 #ifdef RGBLIGHT_ENABLE
 #define RGBLIGHT_LED_COUNT 30
@@ -63,6 +68,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_BREATHING
 #define RGBLIGHT_EFFECT_BREATHE_MAX 135
 #define RGBLIGHT_LAYERS
+
 // Removing unused RGB animations
 #undef RGBLIGHT_EFFECT_RAINBOW_MOOD
 #undef RGBLIGHT_EFFECT_RAINBOW_SWIRL
@@ -74,25 +80,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef RGBLIGHT_EFFECT_ALTERNATING
 #undef RGBLIGHT_EFFECT_TWINKLE
 #endif
+
 // Haptic feedback initialization settings
-#if HAPTIC_DRIVER == drv2605l
+#ifdef HAPTIC_ENABLE
 #define DRV2605L_FB_ERM_LRA 0
 #define DRV2605L_FB_BRAKEFACTOR 6
 #define DRV2605L_FB_LOOPGAIN 3
-#define DRV2605L_RATED_VOLTAGE 3
-#define DRV2605L_V_PEAK 5
+#define DRV2605L_RATED_VOLTAGE 2.7
+#define DRV2605L_V_PEAK 5.1
 // Haptic feedback behaviour settings - Vibrations
 #define DRV2605L_GREETING 92
 #define DRV2605L_DEFAULT_MODE 1
-#elif HAPTIC_DRIVER == solenoid
-#define SOLENOID_PIN GP10
-#define SOLENOID_MIN_DWELL 10
-#define SOLENOID_MAX_DWELL 100
-#define SOLENOID_DWELL_STEP_SIZE 5
-#define SOLENOID_DEFAULT_BUZZ 0
-#endif
 
-#ifdef HAPTIC_ENABLE
 // #define NO_HAPTIC_MOD
 #define NO_HAPTIC_ALPHA
 #define NO_HAPTIC_PUNCTUATION
