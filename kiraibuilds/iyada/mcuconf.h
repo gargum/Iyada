@@ -72,15 +72,15 @@
 // for all rotary and scroll encoders
 #ifdef ENCODER_ENABLE
     #undef ENCODERS_PAD_A
-    #define ENCODERS_PAD_A { GP20, GP21 }
+    #define ENCODERS_PAD_A { GP22, GP23 }
     #undef ENCODERS_PAD_B
-    #define ENCODERS_PAD_B { GP22, GP23 }
+    #define ENCODERS_PAD_B { GP20, GP21 }
     #undef ENCODER_RESOLUTIONS
     #define ENCODER_RESOLUTIONS { 4, 4 }
     #undef ENCODERS_PAD_A_RIGHT
-    #define ENCODERS_PAD_A_RIGHT { GP21, GP20 }
+    #define ENCODERS_PAD_A_RIGHT { GP23, GP22 }
     #undef ENCODERS_PAD_B_RIGHT
-    #define ENCODERS_PAD_B_RIGHT { GP23, GP22 }
+    #define ENCODERS_PAD_B_RIGHT { GP21, GP20 }
     #undef ENCODER_RESOLUTIONS_RIGHT
     #define ENCODER_RESOLUTIONS_RIGHT { 4, 4 }
 #endif
