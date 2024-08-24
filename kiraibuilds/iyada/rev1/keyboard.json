@@ -1,0 +1,12 @@
+{
+    "keyboard_name": "Iyada",
+    "usb": {
+        "pid": "0x0001"
+    },
+    "features": {
+        "bootmagic": true,
+        "mousekey": true,
+        "extrakey": true,
+        "nkro": true
+    }
+}
