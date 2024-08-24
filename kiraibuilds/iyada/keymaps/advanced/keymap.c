@@ -11,7 +11,7 @@
 #include "custom_rgb_layers.c"
 #endif
 #ifdef OLED_ENABLE
-#include "graphics/custom_oled.c"
+#include "graphics/default/default_oled.c"
 #endif
 
 // Keyboard layout
