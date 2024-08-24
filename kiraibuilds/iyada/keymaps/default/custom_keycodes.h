@@ -1,25 +1,17 @@
 // Remember, never put sensitive information like a password into this file!
 
-//Layer shift button keycodes - Used to save space in keymap.c files, and to create a modified version of QMK's TT(layer) function
+//Layer shift button keycodes - Used to make keymap.c files look tidier
     #define TT_SYM TT(_SYMBOL)
     #define TT_MOU TT(_MOUSE)
     #define TT_GAM TT(_GAMES)
     #define TT_STE TT(_STENO)
     #define TT_QWE TT(_QWERTY)
-    #define TO_SYM TO(_SYMBOL)
-    #define TO_MOU TO(_MOUSE)
-    #define TO_GAM TO(_GAMES)
-    #define TO_STE TO(_STENO)
-    #define TO_QWE TO(_QWERTY)
-    #define MO_SYM MO(_SYMBOL)
-    #define MO_MOU MO(_MOUSE)
-    #define MO_GAM MO(_GAMES)
-    #define MO_STE MO(_STENO)
-    #define MO_QWE MO(_QWERTY)
     
 //Button combination keycodes - Used for the sake of convenience
     #define GUI_DEL GUI_T(KC_DEL)
     #define GUI_QUO RGUI_T(KC_QUOT)
+    #define KC_TABL LCTL(KC_PGUP)
+    #define KC_TABR LCTL(KC_PGDN)
     
 //Tap Dance trigger keycodes - Used to save space in keymap.c files
     #define TD_ESC TD(ESC_DANCE)
