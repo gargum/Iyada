@@ -37,8 +37,7 @@ STE_DANCE,
 };
 
 // Tap dance function declarations
-td_state_t cur_dance (tap_dance_state_t *state);
-td_state_t rig_dance (tap_dance_state_t *state);
+td_state_t cur_dance (tap_dance_state_t *state); 
 void esc_finished (tap_dance_state_t *state, void *user_data);
 void grv_finished (tap_dance_state_t *state, void *user_data);
 void bck_finished (tap_dance_state_t *state, void *user_data);
@@ -80,18 +79,6 @@ static td_tap_t xtap_state = {
   .state = TD_NONE
 };
 
-td_state_t rig_dance(tap_dance_state_t *state) {
-  if (state->count == 1) {
-    if (state->interrupted || !state->pressed)  return TD_SINGLE_TAP;
-    else return TD_SINGLE_HOLD;
-  }
-  else if (state->count == 2) {
-    if (state->interrupted) return TD_DOUBLE_SINGLE_TAP;
-    else if (state->pressed) return TD_DOUBLE_HOLD;
-    else return TD_DOUBLE_TAP;
-  } else return TD_UNKNOWN;
-}
-
 void esc_finished (tap_dance_state_t *state, void *user_data) {
   xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
@@ -124,7 +111,7 @@ void esc_reset (tap_dance_state_t *state, void *user_data) {
 }
 
 void grv_finished (tap_dance_state_t *state, void *user_data) {
- xtap_state.state = rig_dance(state);
+ xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
     case TD_SINGLE_TAP: register_code(KC_BSLS); break;
     case TD_SINGLE_HOLD: register_code(KC_RALT); break;
@@ -152,7 +139,7 @@ void grv_reset (tap_dance_state_t *state, void *user_data) {
 }
 
 void bck_finished (tap_dance_state_t *state, void *user_data) {
- xtap_state.state = rig_dance(state);
+ xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
     case TD_SINGLE_TAP: register_code(KC_BSPC); break;
     case TD_SINGLE_HOLD: register_code(KC_LCTL); register_code(KC_BSPC); break;
@@ -180,7 +167,7 @@ void bck_reset (tap_dance_state_t *state, void *user_data) {
 }
 
 void qwe_finished (tap_dance_state_t *state, void *user_data) {
- xtap_state.state = rig_dance(state);
+ xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
     case TD_SINGLE_TAP: layer_move(_QWERTY); break;
     case TD_SINGLE_HOLD: layer_move(_QWERTY); break;
@@ -208,7 +195,7 @@ void qwe_reset (tap_dance_state_t *state, void *user_data) {
 }
 
 void sym_finished (tap_dance_state_t *state, void *user_data) {
- xtap_state.state = rig_dance(state);
+ xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
     case TD_SINGLE_TAP: layer_move(_SYMBOL); break;
     case TD_SINGLE_HOLD: layer_move(_SYMBOL); break;
@@ -236,7 +223,7 @@ void sym_reset (tap_dance_state_t *state, void *user_data) {
 }
 
 void mou_finished (tap_dance_state_t *state, void *user_data) {
- xtap_state.state = rig_dance(state);
+ xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
     case TD_SINGLE_TAP: layer_move(_MOUSE); break;
     case TD_SINGLE_HOLD: layer_move(_MOUSE); break;
@@ -265,7 +252,7 @@ void mou_reset (tap_dance_state_t *state, void *user_data) {
 
 #ifdef JOYSTICK_ENABLE
 void gam_finished (tap_dance_state_t *state, void *user_data) {
- xtap_state.state = rig_dance(state);
+ xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
     case TD_SINGLE_TAP: layer_move(_GAMES); break;
     case TD_SINGLE_HOLD: layer_move(_GAMES); break;
@@ -295,7 +282,7 @@ void gam_reset (tap_dance_state_t *state, void *user_data) {
 
 #ifdef STENO_ENABLE
 void ste_finished (tap_dance_state_t *state, void *user_data) {
- xtap_state.state = rig_dance(state);
+ xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
     case TD_SINGLE_TAP: layer_move(_STENO); break;
     case TD_SINGLE_HOLD: layer_move(_STENO); break;
