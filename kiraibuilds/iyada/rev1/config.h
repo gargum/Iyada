@@ -72,6 +72,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Audio settings - Sound settings
 #ifdef AUDIO_ENABLE
     #define AUDIO_CLICKY
+    #define AUDIO_CLICKY_FREQ_DEFAULT 250
+    #define AUDIO_CLICKY_FREQ_MIN 100
+    #define AUDIO_CLICKY_FREQ_MAX 400
 #endif
 
 // Joystick settings - Axis definitions
