@@ -49,3 +49,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define NO_HAPTIC_LOCKKEYS
     #define NO_HAPTIC_NAV
     #define NO_HAPTIC_NUMERIC
+
+// Audio feedback behaviour settings - Default sounds
+    #define AUDIO_ON_SONG SONG(PLOVER_SOUND)
+    #define AUDIO_OFF_SONG SONG(PLOVER_GOODBYE_SOUND)
