@@ -1,9 +1,8 @@
 #include QMK_KEYBOARD_H
-#include "custom_keycodes.h" 
+#include "layers.h"
+#include "custom_keycodes.h"
 #include "custom_tap_dances.c"
 #include "keyboards/gboards/g/keymap_combo.h"
-#include "custom_rgb_layers.c"
-#include "graphics/default/default_oled.c"
 
 // Keyboard layout
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -30,7 +29,7 @@ KC_TRNS,  KC_TRNS,                                                              
 [_MOUSE] = LAYOUT_54(
 KC_TRNS,  RGB_VAD,  AC_TOGG,  KC_MS_U,  AS_TOGG,  DM_REC1,  DT_UP,        DT_DOWN,  KC_ACL0,  KC_BTN1,  KC_UP,    KC_BTN2,  RGB_VAI,  KC_TRNS,
 KC_TRNS,  RGB_TOG,  KC_MS_L,  KC_MS_D,  KC_MS_R,  DM_RSTP,  KC_TRNS,      KC_TRNS,  KC_ACL1,  KC_LEFT,  KC_DOWN,  KC_RGHT,  AU_TOGG,  KC_TRNS,
-KC_TRNS,  HF_PREV,  HF_COND,  HF_TOGG,  CW_TOGG,  DM_PLY1,                          KC_ACL2,  QK_LOCK,  HF_RST,   HF_CONU,  HF_NEXT,  KC_TRNS,
+KC_TRNS,  HF_PREV,  HF_COND,  HF_TOGG,  CW_TOGG,  DM_PLY1,                          KC_ACL2,  AS_TOGG,  HF_RST,   HF_CONU,  HF_NEXT,  KC_TRNS,
 KC_TRNS,  KC_TRNS,                                                                                                          KC_TRNS,  KC_TRNS,
 
                                                   KC_TRNS,  KC_TRNS,      KC_TRNS,  KC_TRNS,
@@ -38,7 +37,7 @@ KC_TRNS,  KC_TRNS,                                                              
 ),
 
 [_GAMES] = LAYOUT_54(
-GC_HOM,   KC_NO,    KC_NO,    GC_L2,    GC_L1,    GC_L3,    GC_SEL,       GC_STA,   GC_R3,    GC_R1,    GC_R2,    KC_NO,    KC_NO,    TT_GAM,
+GC_HOM,   KC_NO,    GC_L3,    GC_L2,    GC_L1,    GC_L3,    GC_SEL,       GC_STA,   GC_R3,    GC_R1,    GC_R2,    GC_R3,    KC_NO,    TT_GAM,
 KC_NO,    GC_L1,    GC_L2,    GC_R2,    GC_R1,    GC_DPU,   KC_NO,        KC_NO,    GC_DPD,   GC_CRO,   GC_CIR,   GC_SQU,   GC_TRI,   KC_NO,
 KC_NO,    HF_PREV,  HF_COND,  HF_TOGG,  KC_NO,    GC_DPL,                           GC_DPR,   KC_NO,    HF_RST,   HF_CONU,  HF_NEXT,  KC_NO,
 GC_SEL,   GC_SEL,                                                                                                           GC_STA,   GC_STA,
@@ -67,7 +66,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_SYMBOL] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
     [_MOUSE]  = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
     #ifdef JOYSTICK_ENABLE
-    [_GAMES]  = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
+    [_GAMES]  = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(GC_DPU, GC_DPD), ENCODER_CCW_CW(GC_DPL, GC_DPR), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
     #endif
     #ifdef STENO_ENABLE
     [_STENO]  = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
