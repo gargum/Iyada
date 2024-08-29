@@ -8,12 +8,12 @@ enum { _GAMES };
 // Keyboard layout
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_GAMES] = LAYOUT_54(
-GC_HOM,   KC_NO,    KC_NO,    GC_L2,    GC_L1,    GC_L3,    GC_SEL,       GC_STA,   GC_R3,    GC_R1,    GC_R2,    KC_NO,    KC_NO,    GC_HOM,
+GC_HOM,   KC_NO,    GC_L3,    GC_L2,    GC_L1,    GC_L3,    GC_SEL,       GC_STA,   GC_R3,    GC_R1,    GC_R2,    GC_R3,    KC_NO,    GC_HOM,
 KC_NO,    GC_L1,    GC_L2,    GC_R2,    GC_R1,    GC_DPU,   KC_NO,        KC_NO,    GC_DPD,   GC_CRO,   GC_CIR,   GC_SQU,   GC_TRI,   KC_NO,
 KC_NO,    HF_PREV,  HF_COND,  HF_TOGG,  KC_NO,    GC_DPL,                           GC_DPR,   KC_NO,    HF_RST,   HF_CONU,  HF_NEXT,  KC_NO,
 GC_SEL,   GC_SEL,                                                                                                           GC_STA,   GC_STA,
 
-                                                  KC_NO,    KC_NO,        KC_NO,    KC_NO,
+                                                  KC_TRNS,  KC_TRNS,      KC_TRNS,  KC_TRNS,
                                         GC_L1,    GC_L2,    GC_L3,        GC_R3,    GC_R2,    GC_R1
 )
 };
@@ -31,21 +31,21 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) { /* LEFT SCROLL ENCODER */
         if (clockwise) { /* Mouse wheel up */
-            tap_code(KC_WH_U);
+            tap_code16(GC_DPU);
         } else { /* Mouse wheel down */
-            tap_code(KC_WH_D);
+            tap_code16(GC_DPD);
         }
     } else if (index == 2) { /* RIGHT SCROLL ENCODER */
         if (clockwise) { /* Mouse wheel right */
-            tap_code(KC_WH_R);
+            tap_code16(GC_DPR);
         } else { /* Mouse wheel left */
-            tap_code(KC_WH_L);
+            tap_code16(GC_DPL);
         }
     } else if (index == 3) { /* RIGHT ROTARY ENCODER */
         if (clockwise) { /* Browser tab right */
-            tap_code16(KC_MNXT);
+            tap_code16(KC_VOLU);
         } else { /* Browser tab left */
-            tap_code16(KC_MPRV);
+            tap_code16(KC_VOLD);
         }
     }
     return true;
