@@ -3,6 +3,7 @@
 #include "custom_keycodes.h"
 #include "custom_tap_dances.c"
 #include "keyboards/gboards/g/keymap_combo.h"
+#include "kiraibuilds/iyada/graphics/default/default_oled.c"
 
 // Keyboard layout
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
