@@ -4,6 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <printf.h>
+#include "layers.h"
 
 #include "iyada_frame_0.h"
 #include "iyada_frame_1.h"
@@ -36,24 +37,31 @@ static void render_logo(void) {
 }
 
 
+#if defined(_QWERTY) || defined(_QWE)
 static void render_main(void) {
     oled_write_raw_P(main_logo, main_logo_length);
 }
+#endif
 
+#if defined(_SYMBOL) || defined(_SYM)
 static void render_symbol(void) {
     oled_write_raw_P(symbol_logo, symbol_logo_length);
 }
+#endif
 
+#if defined(_MOUSE) || defined(_MOU)
 static void render_mouse(void) {
-    oled_write_raw_P(mouse_logo, mouse_logo_length);
-}
-#ifdef JOYSTICK_ENABLE
-static void render_games(void) {
     oled_write_raw_P(mouse_logo, mouse_logo_length);
 }
 #endif
 
-#ifdef STENO_ENABLE
+#if defined(_GAMES) || defined(_GAM)
+static void render_games(void) {
+    oled_write_raw_P(game_logo, game_logo_length);
+}
+#endif
+
+#if defined(_STENO) || defined(_STE)
 static void render_steno(void) {
     oled_write_raw_P(plover_logo, plover_logo_length);
 }
@@ -93,26 +101,72 @@ bool oled_task_user() {
 if (is_keyboard_left()) {
  // Write current layer to OLED display
 switch (get_highest_layer(layer_state)) {
+#ifdef _QWERTY
  case _QWERTY :
  render_main();
   break;
+#endif
+
+#ifdef _SYMBOL
  case _SYMBOL :
  render_symbol();
   break;
+#endif
+
+#ifdef _MOUSE
  case _MOUSE :
  render_mouse();
   break;
+#endif
+
+#ifdef _QWE
+ case _QWE :
+ render_main();
+  break;
+#endif
+
+#ifdef _SYM
+ case _SYM :
+ render_symbol();
+  break;
+#endif
+
+#ifdef _MOU
+ case _MOU :
+ render_mouse();
+  break;
+#endif
   
 #ifdef JOYSTICK_ENABLE
+
+#ifdef _GAMES
  case _GAMES :
  render_games();
   break;
 #endif
 
+#ifdef _GAM
+ case _GAM :
+ render_games();
+  break;
+#endif
+
+#endif
+
 #ifdef STENO_ENABLE
+
+#ifdef _STENO
  case _STENO :
  render_steno();
   break;
+#endif
+
+#ifdef _STE
+ case _STE :
+ render_steno();
+  break;
+#endif
+  
 #endif
 
  }
