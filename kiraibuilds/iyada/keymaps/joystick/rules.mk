@@ -16,6 +16,7 @@ AUDIO_ENABLE = no 								# Audio output
 UNICODE_ENABLE = no								# Unicode output
 JOYSTICK_ENABLE = yes 							# Gamepad & Joystick output
 JOYSTICK_DRIVER = digital					    # Gamepad & Joystick driver
+SRC += layer_behaviours.c					    # Parsing the layer_behaviours.c file (RGB Light Layers, Layer sounds, Cirque Dual Joystick)
 ENCODER_MAP_ENABLE = no 						# Encoder map toggle
   
 POINTING_DEVICE_ENABLE = yes					# Mouse sensor input toggle
