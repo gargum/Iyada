@@ -1,6 +1,6 @@
 # Iyada
 
-![Iyada](https://i.imgur.com/hbfquj2.gif)
+[![Iyada](https://raw.githubusercontent.com/gargum/Iyada/main/photos/iyada_main.jpg)](https://i.imgur.com/hbfquj2.mp4)
 
 *The Iyada is a keyboard, mouse, space mouse, and a gamepad in one unit*
 
