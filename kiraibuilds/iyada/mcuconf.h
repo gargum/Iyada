@@ -1,3 +1,8 @@
+/*
+* This file exists to configure the RP2040. 
+* It is also used to turn on features such as increased USB power consumption, and the use of PIO to connect the two halves of the Iyada.
+*/
+
 #pragma once
 
 #include_next <mcuconf.h>
@@ -71,18 +76,35 @@
 
 // for all rotary and scroll encoders
 #ifdef ENCODER_ENABLE
+
     #undef ENCODERS_PAD_A
-    #define ENCODERS_PAD_A { GP22, GP23 }
     #undef ENCODERS_PAD_B
-    #define ENCODERS_PAD_B { GP20, GP21 }
     #undef ENCODER_RESOLUTIONS
-    #define ENCODER_RESOLUTIONS { 4, 4 }
     #undef ENCODERS_PAD_A_RIGHT
-    #define ENCODERS_PAD_A_RIGHT { GP23, GP22 }
     #undef ENCODERS_PAD_B_RIGHT
-    #define ENCODERS_PAD_B_RIGHT { GP21, GP20 }
     #undef ENCODER_RESOLUTIONS_RIGHT
+
+// for selecting between EC11 and EC12 rotary encoders
+#if(EC12_LEFT == yes)
+    #define ENCODERS_PAD_A { GP20, GP23 }
+    #define ENCODERS_PAD_B { GP22, GP21 }
+    #define ENCODER_RESOLUTIONS { 4, 4 }
+#elif(EC12_LEFT == no)
+    #define ENCODERS_PAD_A { GP22, GP23 }
+    #define ENCODERS_PAD_B { GP20, GP21 }
+    #define ENCODER_RESOLUTIONS { 4, 4 }
+#endif
+    
+#if(EC12_RIGHT == yes)
+    #define ENCODERS_PAD_A_RIGHT { GP23, GP20 }
+    #define ENCODERS_PAD_B_RIGHT { GP21, GP22 }
     #define ENCODER_RESOLUTIONS_RIGHT { 4, 4 }
+#elif(EC12_RIGHT == no)
+    #define ENCODERS_PAD_A_RIGHT { GP23, GP22 }
+    #define ENCODERS_PAD_B_RIGHT { GP21, GP20 }
+    #define ENCODER_RESOLUTIONS_RIGHT { 4, 4 }
+#endif 
+
 #endif
 
 // for firmware size reduction
