@@ -5,6 +5,7 @@
 *The Iyada is a keyboard, mouse, space mouse, and a gamepad in one unit*
 
 * Keyboard Maintainer: [Gareth Gummow](https://github.com/gargum)
+* Demonstration: [Iyada Dual Analogue Gameplay](https://imgur.com/gallery/iyada-simple-demos-vVryoOj)
 
 This device is powered by QMK Firmware running on two RP2040 Microcontrollers.
 
@@ -27,8 +28,6 @@ Brand new to QMK? Start with the [Complete Newbs Guide](https://docs.qmk.fm/#/ne
 * **Dual Analogue Support**: The Iyada natively supports virtual dual analogue sticks. This means, using software such as a video game emulator, one is able to map each Cirque Pinnacle trackpad to its own
 separate analogue stick. By default, flicking or swiping in a direction will toggle that direction, and tapping will reset it. This is to allow those with RSI or arthritis that prevents
 one from holding down a standard analogue stick to use a dual analogue input method. As a side-effect, this method also frees up one's thumbs, better allowing one to use gamepad buttons mapped to the thumb cluster.
-
-**A simple demonstration of the dual analogue joystick functionality can be viewed [here.](https://imgur.com/gallery/iyada-simple-demos-vVryoOj)**
 
 ## Additional Information
 
