@@ -1,17 +1,5 @@
-/* Copyright 2024 Gareth Gummow <ggummow@uwaterloo.ca> (@gargum)
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+/*
+* This file is used to configure the default behaviours of the Iyada when given features like RGB and Audio are enabled.
 */
 
 #pragma once
@@ -48,16 +36,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define RGBLIGHT_LED_COUNT 30
     #define RGBLED_SPLIT { 15, 15 }
     #define RGBLIGHT_EFFECT_BREATHING
-    #define RGBLIGHT_HUE_STEP 8
-    #define RGBLIGHT_SAT_STEP 8
-    #define RGBLIGHT_VAL_STEP 8
-    #define RGBLIGHT_LIMIT_VAL 135
-    #define RGBLIGHT_DEFAULT_VAL 135
-    #define RGBLIGHT_DEFAULT_HUE 148
-    #define RGBLIGHT_DEFAULT_SAT 225
-    #define RGBLIGHT_DEFAULT_SPD 1
+    #define RGBLIGHT_LIMIT_VAL 165
+    #define RGBLIGHT_DEFAULT_VAL 130
     #define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_BREATHING
-    #define RGBLIGHT_EFFECT_BREATHE_MAX 135
+    #define RGBLIGHT_DEFAULT_SPD 3
 #endif
 
 // Haptic feedback initialization settings
@@ -80,4 +62,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Joystick settings - Axis definitions
 #ifdef JOYSTICK_ENABLE
     #define JOYSTICK_AXIS_COUNT 4
+    #define JOYSTICK_BUTTON_COUNT 17
 #endif
