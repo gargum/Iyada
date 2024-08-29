@@ -24,6 +24,11 @@ Brand new to QMK? Start with the [Complete Newbs Guide](https://docs.qmk.fm/#/ne
 * **Haptic Feedback**: The Iyada is equipped with a DRV2605L on each half, allowing for haptic feedback that informs the user that a layer shift key has been pressed!
 * **Audio Feedback**: The Iyada is equipeed with a small piezoelectric speaker on each side that relies on hardware-driven PWM to produce sound! By default, this allows the user to make the Iyada produce an audible sound whenever a key is pressed.
 * **Power Boosting**: The Iyada is equipped with a TP4056 and a lithium polymer battery on each side! This allows one to provide extra power, thereby ensuring features like RGB and Haptics are always working as expected, no matter the configuration!
+* **Dual Analogue Support**: The Iyada natively supports virtual dual analogue sticks. This means, using software such as a video game emulator, one is able to map each Cirque Pinnacle trackpad to its own
+separate analogue stick. By default, flicking or swiping in a direction will toggle that direction, and tapping will reset it. This is to allow those with RSI or arthritis that prevents
+one from holding down a standard analogue stick to use a dual analogue input method. As a side-effect, this method also frees up one's thumbs, better allowing one to use gamepad buttons mapped to the thumb cluster.
+
+**A simple demonstration of the dual analogue joystick functionality can be viewed [here.](https://imgur.com/gallery/iyada-simple-demos-vVryoOj)**
 
 ## Additional Information
 
@@ -40,6 +45,3 @@ Brand new to QMK? Start with the [Complete Newbs Guide](https://docs.qmk.fm/#/ne
 * **SPI Peripherals**: The Iyada supports direct control of SPI-based peripherals, including Cirque trackpads that have been configured to communicate via SPI. If one wants to use any such peripheral, simply hand-wire the appropriate connections the corresponding 4 pins located on the bottom of the MCU.
 * **Power Draw**: If one uses two 5V Cirque trackpads in tandem with WS2812B-5050 LEDs, the battery and charging accessories are required to provide all components with sufficient power simultaneously. Neglecting to do so when using this configuration will result in the 5V Cirque present on the secondary half of the keyboard to become non-responsive. Even with the additional battery and charging accessories, it is possible that there will still be insufficient power if one is using an Iyada with two 5V Cirque trackpads, WS2812B-5050 LEDs, and additional non-standard peripherals connected via an SPI to I2C bus-bridge such as the SC18IS604.
 * **Battery Connections**: The Iyada natively supports the use of a lipo battery on each half to help power more energy-intensive configurations. Simply solder the battery wires to the TP4056 units on each half, and position the battery so as to not block any of the Iyada's LEDs.
-* **Dual Analogue Support**: The Iyada natively supports virtual dual analogue sticks. This means, using software such as a video game emulator, one is able to map each Cirque Pinnacle trackpad to its own
-separate analogue stick for use in modern games. By default, flicking or swiping in a direction will toggle that direction, and tapping will reset it. This is to allow those with RSI or arthritis that prevents
-one from holding down a standard analogue stick to use a dual analogue input method. As a side-effect, this method also frees up one's thumbs, better allowing one to use gamepad buttons mapped to the thumb cluster.
