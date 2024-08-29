@@ -23,6 +23,6 @@ COMB(CO_GA_L,   TT_GAM,   TT_MOU,    TT_SYM)
 // Key Combo Definitions - Stenography
 //
 //  name        result    chord keys
-COMB(CO_ST_R,   TD_STE,   KC_LSFT,   TT_MOU,   TT_SYM)
+COMB(CO_ST_R,   TT_STE,   KC_LSFT,   TT_MOU,   TT_SYM)
 COMB(CO_ST_X,   TT_STE,   STN_N1,    STN_NC)
 COMB(CO_ST_P,   STN_PWR,  STN_RES1,  STN_RES2)
