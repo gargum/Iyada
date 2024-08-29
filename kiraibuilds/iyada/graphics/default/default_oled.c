@@ -1,10 +1,11 @@
 // This file exists for the sake of convenience, specifically to make adding and changing OLED graphics more straight-forward.
 
+#include QMK_KEYBOARD_H
 #include <hal.h>
 #include <string.h>
 #include <ctype.h>
 #include <printf.h>
-#include "layers.h"
+#include "keyboard.h"
 
 #include "iyada_frame_0.h"
 #include "iyada_frame_1.h"
