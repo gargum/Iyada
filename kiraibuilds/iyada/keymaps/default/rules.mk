@@ -16,6 +16,8 @@ AUDIO_ENABLE = no 								# Audio output
 UNICODE_ENABLE = no								# Unicode output
 JOYSTICK_ENABLE = no 							# Gamepad & Joystick output
 JOYSTICK_DRIVER = digital					    # Gamepad & Joystick driver
+HAPTIC_FEEDBACK = no
+HAPTIC_DRIVER = drv2605l
 ENCODER_MAP_ENABLE = yes						# Encoder map toggle
   
 POINTING_DEVICE_ENABLE = yes					# Mouse sensor input toggle
