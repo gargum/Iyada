@@ -22,12 +22,7 @@ endif
 ifdef RGBLIGHT_ENABLE
 	SLEEP_LED_ENABLE = yes							# LEDs inactive when computer is sleeping
 	SRC += layer_behaviours.c					    # Parsing the layer_behaviours.c file (RGB Light Layers, Layer sounds, Cirque Dual Joystick)
-endif
-
-ifdef OLED_ENABLE
-	VPATH += keyboards/kiraibuilds/iyada/graphics	# Directory where OLED graphics are stored
-	SRC += default/default_oled.c					# Parsing the primary OLED graphics file
-endif							
+endif					
 
 ifdef HAPTIC_ENABLE
 	HAPTIC_DRIVER = drv2605l                        # Haptic feedback driver
