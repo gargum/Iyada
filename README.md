@@ -6,6 +6,7 @@
 
 * Keyboard Maintainer: [Gareth Gummow](https://github.com/gargum)
 * Demonstration: [Iyada Dual Analogue Gameplay](https://imgur.com/gallery/iyada-simple-demos-vVryoOj)
+* Recommended Keycaps: [KLP Lamé](https://github.com/braindefender/KLP-Lame-Keycaps)
 
 This device is powered by QMK Firmware running on two RP2040 Microcontrollers.
 
