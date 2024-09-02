@@ -1,8 +1,4 @@
-#include QMK_KEYBOARD_H
-#include "graphics/default/default_oled.c"
-
-// Layer definitions
-enum { _STENO };
+#include "rev1/settings.h"
 
 // Keyboard layout
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
