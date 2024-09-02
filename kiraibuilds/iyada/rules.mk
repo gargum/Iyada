@@ -31,8 +31,8 @@
 	SLEEP_LED_ENABLE = yes							# LEDs inactive when computer is sleeping
 	
 # OLED screens
-	OLED_ENABLE = yes								# OLED 32x128 display toggle
-	SRC += graphics/default/default_oled.c			# Including default graphics
+	OLED_ENABLE = yes								# OLED display toggle
+	OLED_DEFAULT_GRAPHICS = yes						# Allowing the user to choose whether to use the graphics that come with the Iyada, or to use their own
 	
 # Dual Cirque Pinnacle Trackpads
 	POINTING_DEVICE_ENABLE = yes					# Cirque input toggle
