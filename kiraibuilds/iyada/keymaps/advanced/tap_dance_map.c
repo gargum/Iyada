@@ -1,6 +1,7 @@
 // This file exists for the sake of convenience, and to make the keymap.c file(s) more readable and more easily edited.
 //
 // Remember, never put sensitive information like a password into this file!
+
 #include "layers.h"
 
 // Enumerating the different types of button press (single tap, double tap, etc)
