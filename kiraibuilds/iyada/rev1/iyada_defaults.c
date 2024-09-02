@@ -1,15 +1,15 @@
 #include QMK_KEYBOARD_H
 #include "keyboard.h"
 
-#if __has_include( "layers.h" ) && LAYER_MAP == yes
+#if __has_include( "layers.h" ) && defined(LAYER_MAP)
     #include "layers.h"
 #endif
 
-#if JOYSTICK_ENABLE == yes
+#ifdef JOYSTICK_ENABLE
     #include "joystick.h"
 #endif
 
-#if AUDIO_ENABLE == yes
+#ifdef AUDIO_ENABLE
     #include "song_list.h"
 #endif
 
