@@ -22,7 +22,7 @@ Brand new to QMK? Start with the [Complete Newbs Guide](https://docs.qmk.fm/#/ne
 * **OLED Screens**: The Iyada is equipped with a 32x128 OLED screenn on each side. The lefthand OLED tells the user which layer is currently active, and the righthand OLED displays a fun, unobtrusive animation!
 * **Four Encoders**: The Iyada is equipped with a rotary encoder and a scroll encoder on each side of the keyboard! By default, these are used for the purposes of web navigation and media playback.
 * **Dual Pointers**: The Iyada is equipped with a Cirque Pinnacle trackpad on each side! By default, these can be used for mouse cursor movement. However, they are also configured to function as dual analogue sticks in video games when the user sets JOYSTICK_ENABLE = yes in the rules.mk file!
-* **RGB Lightingn**: The baseplate of the Iyada comes equipped with LEDs, allowing for RGB animations and simple backlighting should the user so desire!
+* **RGB Lighting**: The baseplate of the Iyada comes equipped with LEDs, allowing for RGB animations and simple backlighting should the user so desire!
 * **Haptic Feedback**: The Iyada is equipped with a DRV2605L on each half, allowing for haptic feedback that informs the user that a layer shift key has been pressed!
 * **Audio Feedback**: The Iyada is equipeed with a small piezoelectric speaker on each side that relies on hardware-driven PWM to produce sound! By default, this allows the user to make the Iyada produce an audible sound whenever a key is pressed.
 * **Power Boosting**: The Iyada is equipped with a TP4056 and a lithium polymer battery on each side! This allows one to provide extra power, thereby ensuring features like RGB and Haptics are always working as expected, no matter the configuration!
