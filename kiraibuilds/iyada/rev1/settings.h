@@ -2,7 +2,7 @@
 
 #include QMK_KEYBOARD_H
 
-//Layer Maps - Allows the user to define their layers in a separate file
+//Layer Maps - Allows the user to define their layers in a separate file called layers.h
 //Layer Maps are useful if you wish to have various files and features reference one's keymap layers.
 #if __has_include( "layers.h" ) && LAYER_MAP == yes
     #include "layers.h"
