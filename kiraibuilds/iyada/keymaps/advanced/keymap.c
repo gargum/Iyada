@@ -1,9 +1,4 @@
-#include QMK_KEYBOARD_H
-#include "layers.h"
-#include "custom_keycodes.h"
-#include "custom_tap_dances.c"
-#include "keyboards/gboards/g/keymap_combo.h"
-#include "kiraibuilds/iyada/graphics/default/default_oled.c"
+#include "rev1/settings.h"
 
 // Keyboard layout
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -59,53 +54,11 @@ STN_ST2,  STN_ST1,                                                              
 };
 
 // Encoders - Behaviour settings
-// Encoder map - Smaller and easier to edit, but less versatile
-#ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 //  Layer         - Left Rotary Encoder             - Left Scroll Encoder             - Right Scroll Encoder            - Right Rotary Encoder
     [_QWERTY] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
     [_SYMBOL] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
     [_MOUSE]  = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
-    #ifdef JOYSTICK_ENABLE
     [_GAMES]  = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(GC_DPU, GC_DPD), ENCODER_CCW_CW(GC_DPL, GC_DPR), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
-    #endif
-    #ifdef STENO_ENABLE
     [_STENO]  = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_WH_D, KC_WH_U), ENCODER_CCW_CW(KC_WH_L, KC_WH_R), ENCODER_CCW_CW(KC_TABL, KC_TABR) },
-    #endif
 };
-#endif
-
-#ifndef ENCODER_MAP_ENABLE
-// Encoder callbacks - Larger and harder to edit, but more powerful
-bool encoder_update_kb(uint8_t index, bool clockwise) {
-    if (!encoder_update_user(index, clockwise)) {
-      return false; /* Don't process further events if user function exists and returns false */
-    }
-    if (index == 0) { /* LEFT ROTARY ENCODER */
-        if (clockwise) { /* Volume Up */
-            tap_code(KC_VOLU);
-        } else { /* Volume Down */
-            tap_code(KC_VOLD);
-        }
-    } else if (index == 1) { /* LEFT SCROLL ENCODER */
-        if (clockwise) { /* Mouse wheel up */
-            tap_code(KC_WH_U);
-        } else { /* Mouse wheel down */
-            tap_code(KC_WH_D);
-        }
-    } else if (index == 2) { /* RIGHT SCROLL ENCODER */
-        if (clockwise) { /* Mouse wheel right */
-            tap_code(KC_WH_R);
-        } else { /* Mouse wheel left */
-            tap_code(KC_WH_L);
-        }
-    } else if (index == 3) { /* RIGHT ROTARY ENCODER */
-        if (clockwise) { /* Browser tab right */
-            tap_code16(KC_TABR);
-        } else { /* Browser tab left */
-            tap_code16(KC_TABL);
-        }
-    }
-    return true;
-}
-#endif
