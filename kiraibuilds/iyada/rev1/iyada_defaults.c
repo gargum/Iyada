@@ -38,7 +38,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
     #ifdef _SYMBOL
         case _SYMBOL:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(125, 255, 160); /* RGB - TEAL */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(sym_song);            /* Layer Song - Play */
         #endif
@@ -49,7 +51,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _SYM
         case _SYM:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(125, 255, 160); /* RGB - TEAL */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(sym_song);            /* Layer Song - Play */
         #endif
@@ -60,7 +64,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _LOWER
         case _LOWER:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(125, 255, 160); /* RGB - TEAL */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(sym_song);            /* Layer Song - Play */
         #endif
@@ -71,7 +77,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _MOUSE
         case _MOUSE:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(183, 255, 255); /* RGB - PURPLE */ 
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(mou_song);            /* Layer Song - Play */
         #endif
@@ -82,7 +90,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _MOU
         case _MOU:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(183, 255, 255); /* RGB - PURPLE */ 
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(mou_song);            /* Layer Song - Play */
         #endif
@@ -93,7 +103,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _RAISE
         case _RAISE:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(183, 255, 255); /* RGB - PURPLE */ 
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(mou_song);            /* Layer Song - Play */
         #endif
@@ -104,7 +116,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _GAMES
         case _GAMES:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(160, 255, 255); /* RGB - BLUE */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(gam_song);            /* Layer Song - Play */
         #endif
@@ -115,7 +129,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _GAM
         case _GAM:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(160, 255, 255); /* RGB - BLUE */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(gam_song);            /* Layer Song - Play */
         #endif
@@ -126,7 +142,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _ADJUST
         case _ADJUST:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(160, 255, 255); /* RGB - BLUE */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(gam_song);            /* Layer Song - Play */
         #endif
@@ -137,7 +155,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _STENO
         case _STENO:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(85, 255, 255);  /* RGB - GREEN */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(ste_song);            /* Layer Song - Play */
         #endif
@@ -148,7 +168,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _STE
         case _STE:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(85, 255, 255);  /* RGB - GREEN */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(ste_song);            /* Layer Song - Play */
         #endif
@@ -159,7 +181,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _PLOVER
         case _PLOVER:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(85, 255, 255);  /* RGB - GREEN */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(ste_song);            /* Layer Song - Play */
         #endif
@@ -170,7 +194,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _MAIN
         case _MAIN:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(150, 30, 255);  /* RGB - AZURE */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(qwe_song);            /* Layer Song - Play */
         #endif
@@ -181,7 +207,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     #endif
     #ifdef _QWERTY
         case _QWERTY:
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(150, 30, 255);  /* RGB - AZURE */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(qwe_song);            /* Layer Song - Play */
         #endif
@@ -191,7 +219,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             break;
     #endif
         default: // Primary/default layer
+        #ifdef RGBLIGHT_ENABLE
             rgblight_sethsv(150, 30, 255);  /* RGB - AZURE */
+        #endif
         #ifdef AUDIO_ENABLE
             PLAY_SONG(qwe_song);            /* Layer Song - Play */
         #endif
