@@ -6,6 +6,7 @@
 #include <ctype.h>
 #include <printf.h>
 #include "keyboard.h"
+#include "layers.h"
 
 #include "iyada_frame_0.h"
 #include "iyada_frame_1.h"
