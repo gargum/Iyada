@@ -5,6 +5,7 @@
 #pragma once
 
 // for split keyboard initialization
+    #define EE_HANDS
     #define SPLIT_LAYOUT
     #define SPLIT_USB_DETECT
     #define SPLIT_USB_TIMEOUT 2000
@@ -19,6 +20,14 @@
     #define SPLIT_LED_STATE_ENABLE
     #define SPLIT_WATCHDOG_ENABLE
     #define SPLIT_WATCHDOG_TIMEOUT 3000
+    
+// Tap Dance default behaviour settings
+#ifdef TAP_DANCE_ENABLE
+    #undef TAPPING_TERM
+    #undef TAPPING_TOGGLE
+    #define TAPPING_TERM 185
+    #define TAPPING_TOGGLE 1
+#endif
 
 // Pointer (Cirque Pinnacle) initialization settings
 #ifdef POINTING_DEVICE_ENABLE
@@ -29,6 +38,8 @@
     #define CIRQUE_PINNACLE_POSITION_MODE CIRQUE_PINNACLE_ABSOLUTE_MODE
     #define CIRQUE_PINNACLE_ATTENUATION EXTREG__TRACK_ADCCONFIG__ADC_ATTENUATE_4X
     #define CIRQUE_PINNACLE_TIMEOUT 20
+    #define CIRQUE_PINNACLE_TAP_ENABLE
+    #define CIRQUE_PINNACLE_CIRCULAR_SCROLL_ENABLE
 #endif
 
 // RGB initialization settings
@@ -49,6 +60,14 @@
     #define DRV2605L_FB_LOOPGAIN 3
     #define DRV2605L_RATED_VOLTAGE 2.7
     #define DRV2605L_V_PEAK 5.1
+// Haptic feedback behaviour settings - Vibrations
+    #define DRV2605L_GREETING 82
+    #define DRV2605L_DEFAULT_MODE 7
+    #define NO_HAPTIC_ALPHA
+    #define NO_HAPTIC_PUNCTUATION
+    #define NO_HAPTIC_LOCKKEYS
+    #define NO_HAPTIC_NAV
+    #define NO_HAPTIC_NUMERIC
 #endif
 
 // Audio settings - Sound settings
