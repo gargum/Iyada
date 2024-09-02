@@ -1,9 +1,4 @@
-#include QMK_KEYBOARD_H
-#include "custom_keycodes.h"
-#include "graphics/default/default_oled.c"
-
-// Layer definitions
-enum { _GAMES };
+#include "rev1/settings.h"
 
 // Keyboard layout
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -19,34 +14,7 @@ GC_SEL,   GC_SEL,                                                               
 };
 
 // Encoder functions
-bool encoder_update_kb(uint8_t index, bool clockwise) {
-    if (!encoder_update_user(index, clockwise)) {
-      return false; /* Don't process further events if user function exists and returns false */
-    }
-    if (index == 0) { /* LEFT ROTARY ENCODER */
-        if (clockwise) { /* Volume Up */
-            tap_code(KC_VOLU);
-        } else { /* Volume Down */
-            tap_code(KC_VOLD);
-        }
-    } else if (index == 1) { /* LEFT SCROLL ENCODER */
-        if (clockwise) { /* Mouse wheel up */
-            tap_code16(GC_DPU);
-        } else { /* Mouse wheel down */
-            tap_code16(GC_DPD);
-        }
-    } else if (index == 2) { /* RIGHT SCROLL ENCODER */
-        if (clockwise) { /* Mouse wheel right */
-            tap_code16(GC_DPR);
-        } else { /* Mouse wheel left */
-            tap_code16(GC_DPL);
-        }
-    } else if (index == 3) { /* RIGHT ROTARY ENCODER */
-        if (clockwise) { /* Browser tab right */
-            tap_code16(KC_VOLU);
-        } else { /* Browser tab left */
-            tap_code16(KC_VOLD);
-        }
-    }
-    return true;
-}
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+//  Layer         - Left Rotary Encoder             - Left Scroll Encoder             - Right Scroll Encoder            - Right Rotary Encoder
+    [_GAMES] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(GC_DPD, GC_DPU), ENCODER_CCW_CW(GC_DPL, GC_DPR), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) }
+};
