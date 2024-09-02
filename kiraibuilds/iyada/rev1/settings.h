@@ -14,8 +14,8 @@
     #include <tap_dance_map.c>
 #endif
 
-#ifdef DEFAULT_CONFIGURATIONS
-    #include "iyada_defaults.c"
+#if DEFAULT_CONFIGURATIONS == yes
+    #include "kiraibuilds/iyada/rev1/iyada_defaults.c"
 #endif
 
 #ifdef OS_DETECTION_ENABLE
