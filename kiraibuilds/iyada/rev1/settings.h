@@ -23,8 +23,12 @@
     #include "kiraibuilds/iyada/rev1/iyada_defaults.c"
 #endif
 
+#if OLED_DEFAULT_GRAPHICS == yes
+    #include "iyada/graphics/default/default_oled.c"
+#endif
+
 //OS Detection - This is being used for the dynamic power draw code
-#ifdef OS_DETECTION_ENABLE
+#if OS_DETECTION_ENABLE == yes
     #include <os_detection.h>
 
 /* Dynamic power draw:
