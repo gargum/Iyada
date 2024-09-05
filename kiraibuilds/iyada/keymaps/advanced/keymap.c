@@ -9,7 +9,7 @@ SC_LCPO,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                         
 KC_DOWN,  KC_LEFT,                                                                                                          KC_RGHT,  KC_UP,
 
                                                   KC_WBAK,  KC_MUTE,      KC_MPLY, KC_WFWD,
-                                        KC_SPC,   TD_BCK,   TT_SYM,       TT_MOU,   KC_ENT,   KC_LSFT 
+                                        KC_SPC,   TD_BCK,   TT_SYM,       TT_MOU,  KC_ENT,   KC_LSFT 
 ),
 
 [_SYMBOL] = LAYOUT_54(
@@ -23,9 +23,9 @@ KC_TRNS,  KC_TRNS,                                                              
 ),
 
 [_MOUSE] = LAYOUT_54(
-KC_TRNS,  RGB_VAD,  AC_TOGG,  KC_MS_U,  AS_TOGG,  DM_REC1,  DT_UP,        DT_DOWN,  KC_ACL0,  KC_BTN1,  KC_UP,    KC_BTN2,  RGB_VAI,  KC_TRNS,
+KC_TRNS,  RGB_VAD,  CW_TOGG,  KC_MS_U,  AS_TOGG,  DM_REC1,  DT_UP,        DT_DOWN,  KC_ACL0,  KC_BTN1,  KC_UP,    KC_BTN2,  RGB_VAI,  KC_TRNS,
 KC_TRNS,  RGB_TOG,  KC_MS_L,  KC_MS_D,  KC_MS_R,  DM_RSTP,  KC_TRNS,      KC_TRNS,  KC_ACL1,  KC_LEFT,  KC_DOWN,  KC_RGHT,  AU_TOGG,  KC_TRNS,
-KC_TRNS,  HF_PREV,  HF_COND,  HF_TOGG,  CW_TOGG,  DM_PLY1,                          KC_ACL2,  AS_TOGG,  HF_RST,   HF_CONU,  HF_NEXT,  KC_TRNS,
+KC_TRNS,  HF_PREV,  HF_COND,  HF_TOGG,  AC_ON,    DM_PLY1,                          KC_ACL2,  AC_OFF,   HF_RST,   HF_CONU,  HF_NEXT,  KC_TRNS,
 KC_TRNS,  KC_TRNS,                                                                                                          KC_TRNS,  KC_TRNS,
 
                                                   KC_TRNS,  KC_TRNS,      KC_TRNS,  KC_TRNS,
