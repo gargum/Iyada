@@ -25,7 +25,7 @@
 #ifdef TAP_DANCE_ENABLE
     #undef TAPPING_TERM
     #undef TAPPING_TOGGLE
-    #define TAPPING_TERM 185
+    #define TAPPING_TERM 150
     #define TAPPING_TOGGLE 1
 #endif
 
