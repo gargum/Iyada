@@ -1,9 +1,11 @@
 // This file exists to make custom tap dances easier to define, edit, and understand.
 //
-// The available taps are TD_SINGLE_TAP, TD_SINGLE_HOLD, TD_DOUBLE_TAP, TD_DOUBLE_HOLD, TD_DOUBLE_SINGLE_TAP, TD_TRIPLE_TAP, TD_TRIPLE_HOLD, and TD_TRIPLE_SINGLE_TAP
+// The available tap types are TD_<NUMBER>_TAP, TD_<NUMBER>_HOLD, and TD_<NUMBER>_SINGLE_TAP.
+// The available <NUMBER> values are SINGLE, DOUBLE and TRIPLE.
+//
 // This means any user-defined Tap Dance Map may map a maximum of 8 separate functions to a single key, excluding TD_NONE and/or TD_UNKNOWN.
 
-#include "rev1/tap_dance_defs.c"
+#include "rev1/tap_defs.c"
 
 #if __has_include( "layers.h" ) && LAYER_MAP == yes
     #include "layers.h"
@@ -109,6 +111,7 @@ void bck_keydown (tap_dance_state_t *state, void *user_data) {
     case TD_SINGLE_TAP: register_code(KC_BSPC); break;
     case TD_SINGLE_HOLD: register_code(KC_LCTL); register_code(KC_BSPC); break;
     case TD_DOUBLE_TAP: register_code(KC_BSPC); unregister_code(KC_BSPC); register_code(KC_BSPC); break;
+    case TD_DOUBLE_SINGLE_TAP: register_code(KC_BSPC); unregister_code(KC_BSPC); register_code(KC_BSPC); break;
     case TD_NONE: break;
     case TD_UNKNOWN: break;
     default: break;
@@ -120,6 +123,7 @@ void bck_keyup (tap_dance_state_t *state, void *user_data) {
     case TD_SINGLE_TAP: unregister_code(KC_BSPC); break;
     case TD_SINGLE_HOLD: unregister_code(KC_LCTL); unregister_code(KC_BSPC); break;
     case TD_DOUBLE_TAP: unregister_code(KC_BSPC); break;
+    case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_BSPC); break;
     case TD_NONE: break;
     case TD_UNKNOWN: break;
     default: break;
