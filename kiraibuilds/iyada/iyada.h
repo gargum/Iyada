@@ -8,9 +8,5 @@
     #include "quantum.h"
     #include <stdint.h>
     #include <stdbool.h>
-    
-#if __has_include( <iyada/rev1/custom_keycodes.c> ) && CUSTOM_CODES == yes
-    #include <iyada/rev1/custom_keycodes.c>
-#endif
 
 void init_iyada(void);
