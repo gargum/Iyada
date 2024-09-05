@@ -8,11 +8,10 @@ WPM_ENABLE = no									# Word Per Minute measurement toggle
 
 TAP_DANCE_ENABLE = yes							# Tap Dance toggle
 TAP_DANCE_MAP = yes								# Tap Dance definitions file toggle
-DYNAMIC_TAPPING_TERM_ENABLE = no				# Dynamic tapping term toggle
+DYNAMIC_TAPPING_TERM_ENABLE = yes				# Dynamic tapping term toggle
 
 AUTOCORRECT_ENABLE = yes 						# Autocorrect toggle
 CAPS_WORD_ENABLE = yes							# Caps word toggle
-AUTO_SHIFT_ENABLE = yes							# Auto shift toggle
 DYNAMIC_MACRO_ENABLE = no						# Dynamic macro toggle
 KEY_LOCK_ENABLE = no							# Key lock toggle
 
