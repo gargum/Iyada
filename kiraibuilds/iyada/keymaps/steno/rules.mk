@@ -12,7 +12,6 @@ DYNAMIC_TAPPING_TERM_ENABLE = no				# Dynamic tapping term toggle
 
 AUTOCORRECT_ENABLE = no 						# Autocorrect toggle
 CAPS_WORD_ENABLE = no							# Caps word toggle
-AUTO_SHIFT_ENABLE = no							# Auto shift toggle
 DYNAMIC_MACRO_ENABLE = no						# Dynamic macro toggle
 KEY_LOCK_ENABLE = no							# Key lock toggle
 
