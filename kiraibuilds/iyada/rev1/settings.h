@@ -8,6 +8,10 @@
     #include "layers.h"
 #endif
 
+#if __has_include( <iyada/rev1/custom_keycodes.c> ) && CUSTOM_CODES == yes
+    #include <iyada/rev1/custom_keycodes.c>
+#endif
+
 //Combo Maps - Allows the user to dynamically include or exclude a combos.def file without having to add or remove the associated #include line from keymap.c
 #if __has_include( "combos.def" ) && COMBO_MAP == yes
     #include "keyboards/gboards/g/keymap_combo.h"
