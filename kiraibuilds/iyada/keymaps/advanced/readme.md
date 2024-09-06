@@ -1,4 +1,4 @@
-# Advanced Iyada Layout - Text Explanation & Walkthrough
+# Advanced Iyada Layout - Introduction
 
 The advanced layout exists to showcase as many of the existing features
 of the Iyada as possible, while at the same time still remaining accessible
@@ -91,7 +91,7 @@ This layout is recommended for those who have not previously owned a custom
 mechanical keyboard, and for those who have not previously used a keyboard
 that includes a built-in trackball or touchpad.
 
-# Default Iyada Layout - Diagrams & Legend
+# Default Iyada Layout - Diagrams
 
 <tt>
 
