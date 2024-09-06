@@ -1,10 +1,10 @@
-# Default Iyada Layout - Text Explanation & Walkthrough
+# Advanced Iyada Layout - Text Explanation & Walkthrough
 
-The default layout exists to help those who are new to custom mechanical 
-keyboards in general get used to various associated concepts. Learning this
-keymap should help beginners become acquainted with concepts including Layers,
-Combos, and Tap Dance, without being too confusing or overwhelming for those
-who have simply never heard of QMK.
+The advanced layout exists to showcase as many of the existing features
+of the Iyada as possible, while at the same time still remaining accessible
+to those who are new to QMK. Learning this keymap should help beginners 
+become acquainted with concepts including Layers, Combos, and Tap Dance, 
+without being too confusing or overwhelming for novices.
 
 Each half of the keyboard has a small OLED screen. These screens are 
 there to provide information to the user regarding the current state of 
