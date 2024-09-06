@@ -1,4 +1,4 @@
-# Default Iyada Layout - Text Explantation & Walkthrough
+# Default Iyada Layout - Introduction
 
 The default layout is designed to be as simple and accessible as
 possible for as many people as possible.
@@ -7,7 +7,7 @@ While this keymap does utilise layers and Space Cadet, it does not
 utilise any other advanced feature of QMK including Combos, Tap Dance,
 Custom Keycodes, Autocorrect, Autoshift, etc.
 
-# Default Iyada Layout - Diagrams & Legend
+# Default Iyada Layout - Diagrams
 
 <tt>
 
