@@ -91,7 +91,7 @@ This layout is recommended for those who have not previously owned a custom
 mechanical keyboard, and for those who have not previously used a keyboard
 that includes a built-in trackball or touchpad.
 
-# Default Iyada Layout - Diagrams
+# Advanced Iyada Layout - Diagrams
 
 <tt>
 
