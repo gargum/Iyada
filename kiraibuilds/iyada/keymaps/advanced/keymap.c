@@ -38,7 +38,7 @@ KC_NO,    GC_L1,    GC_L2,    GC_R2,    GC_R1,    GC_DPU,   KC_NO,        KC_NO,
 KC_NO,    HF_PREV,  HF_COND,  HF_TOGG,  KC_NO,    GC_DPL,                           GC_DPR,   KC_NO,    HF_RST,   HF_CONU,  HF_NEXT,  KC_NO,
 GC_SEL,   GC_SEL,                                                                                                           GC_STA,   GC_STA,
 
-                                                  KC_TRNS,  KC_TRNS,      KC_TRNS,  KC_TRNS,
+                                                  KC_TRNS,  KC_SYRQ,      KC_CNCL,  KC_TRNS,
                                         GC_L1,    GC_L2,    GC_L3,        GC_R3,    GC_R2,    GC_R1
 ),
 
