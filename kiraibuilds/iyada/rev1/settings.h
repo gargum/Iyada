@@ -22,9 +22,14 @@
     #include <tap_dance_map.c>
 #endif
 
+//LED Layering - Allows the user to define custom layer-dependant behaviours for the RGB LEDs
+#if defined(RGBLIGHT_ENABLE) || defined(AUDIO_ENABLE)
+    #include "kiraibuilds/iyada/rev1/rgb_defaults.c"
+#endif
+
 //Default Configurations - Allows the user to choose whether or not to include default settings like the Cirque joysticks and RGB layering
-#if DEFAULT_CONFIGURATIONS == yes
-    #include "kiraibuilds/iyada/rev1/iyada_defaults.c"
+#if defined(POINTING_DEVICE_ENABLE)
+    #include "kiraibuilds/iyada/rev1/cirque_defaults.c"
 #endif
 
 #if OLED_DEFAULT_GRAPHICS == yes
