@@ -83,13 +83,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef JOYSTICK_ENABLE
     case KC_SYRQ:
       if (record->event.pressed) {
-        cirque_joystick_mode = 1;
+      
+        if(cirque_joystick_mode > 1){
+            cirque_joystick_mode -= 1;
+        }else if(cirque_joystick_mode == 1){
+            cirque_joystick_mode = 3;
+        }
 
       }
       return false; // Skip all further processing of this key
     case KC_CNCL:
       if (record->event.pressed) {
-        cirque_joystick_mode = 2;
+        
+        if(cirque_joystick_mode < 3){
+            cirque_joystick_mode += 1;
+        }else if(cirque_joystick_mode == 3){
+            cirque_joystick_mode = 1;
+        }
 
       }
       return false; // Skip all further processing of this key
@@ -143,12 +153,70 @@ uint16_t yRightTemp = ((right_joystick_set.yValue/8)-128);
 //
 //Mode 2 - Swiping in a direction on a given Cirque holds the corresponding joystick in that direction, while tapping resets it.
 } else if (cirque_joystick_mode == 2) {
-
+    //Left Stick Code
     uint16_t LeftCirqueX  = joystick_read_axis(0)+left_report.x;
     uint16_t LeftCirqueY  = joystick_read_axis(1)+left_report.y;
+        //Left Stick - X Axis
+        if(left_report.x!=0){
+            joystick_set_axis(0, LeftCirqueX);
+        }
+        //Left Stick - Y Axis
+        if(left_report.y!=0){
+            joystick_set_axis(1, LeftCirqueY);
+        }
+    //Right Stick Code   
     uint16_t RightCirqueX = joystick_read_axis(2)+right_report.x;
     uint16_t RightCirqueY = joystick_read_axis(3)+right_report.y;
+        //Right Stick - X Axis
+        if(right_report.x!=0){
+            joystick_set_axis(2, RightCirqueX);
+        }
+        //Right Stick - Y Axis
+        if(right_report.y!=0){
+            joystick_set_axis(3, RightCirqueY);
+        }
+//Cirque Joystick Code - Mode 3 Code
+//
+//Mode 3 - Polling the Absolute X and Absolute Y values from one Cirque trackpad, while putting the other into Mode 2
+} else if (cirque_joystick_mode == 3) {
+    if(is_keyboard_left()){
+    
+//Left Side Master - Code
+    pinnacle_data_t left_joystick_set = cirque_pinnacle_read_data();
+    //Left Stick Code
+    uint16_t xLeftTemp = ((left_joystick_set.xValue/8)-128);
+    uint16_t yLeftTemp = ((left_joystick_set.yValue/8)-128);
+
+        if(left_joystick_set.touchDown!=0||left_joystick_set.zValue!=0){
+            joystick_set_axis(0, +xLeftTemp);
+            joystick_set_axis(1, +yLeftTemp);
+        }
+    //Right Stick Code  
+    uint16_t RightCirqueX = joystick_read_axis(2)+right_report.x;
+    uint16_t RightCirqueY = joystick_read_axis(3)+right_report.y;
+        if(right_report.x!=0){
+            joystick_set_axis(2, RightCirqueX);
+        }
         
+        if(right_report.y!=0){
+            joystick_set_axis(3, RightCirqueY);
+        }
+    
+    }else{
+    
+//Right Side Master - Code
+    pinnacle_data_t right_joystick_set = cirque_pinnacle_read_data();
+    //Right Stick Code
+    uint16_t xRightTemp = ((right_joystick_set.xValue/8)-128);
+    uint16_t yRightTemp = ((right_joystick_set.yValue/8)-128);
+
+        if(right_joystick_set.touchDown!=0||right_joystick_set.zValue!=0){
+            joystick_set_axis(2, +xRightTemp);
+            joystick_set_axis(3, +yRightTemp);
+        }
+    //Left Stick Code
+    uint16_t LeftCirqueX  = joystick_read_axis(0)+left_report.x;
+    uint16_t LeftCirqueY  = joystick_read_axis(1)+left_report.y;
         if(left_report.x!=0){
             joystick_set_axis(0, LeftCirqueX);
         }
@@ -157,13 +225,7 @@ uint16_t yRightTemp = ((right_joystick_set.yValue/8)-128);
             joystick_set_axis(1, LeftCirqueY);
         }
         
-        if(right_report.x!=0){
-            joystick_set_axis(2, RightCirqueX);
-        }
-        
-        if(right_report.y!=0){
-            joystick_set_axis(3, RightCirqueY);
-        }
+    }
 }
 #endif
 
@@ -208,8 +270,21 @@ uint16_t yRightTemp = ((right_joystick_set.yValue/8)-128);
         left_report.buttons &= ~MOUSE_BTN2;
         right_report.buttons &= ~MOUSE_BTN1;
         right_report.buttons &= ~MOUSE_BTN2;
+    }else if(cirque_joystick_mode == 3){
+        left_report.x = 0;
+        left_report.y = 0;
+        left_report.v = 0;
+        left_report.h = 0;
+        right_report.x = 0;
+        right_report.y = 0;
+        right_report.v = 0;
+        right_report.h = 0;
+        left_report.buttons &= ~MOUSE_BTN1;
+        left_report.buttons &= ~MOUSE_BTN2;
+        right_report.buttons &= ~MOUSE_BTN1;
+        right_report.buttons &= ~MOUSE_BTN2;
     }
-    }
+  } 
 #endif
  
     return pointing_device_combine_reports(left_report, right_report);
