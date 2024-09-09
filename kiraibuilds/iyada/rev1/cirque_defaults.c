@@ -245,7 +245,7 @@ uint16_t yRightTemp = ((right_joystick_set.yValue/8)-128);
 #ifdef JOYSTICK_ENABLE
 //  Cirque Joystick - Setting the previously enumerated Joystick axes
     if(layer_state_is(_GAMES)) {
-// Setting the non-joystick related pointer movements to zero when on a Joystick layer
+// Setting the non-joystick related pointer movements to zero when appropriate
     if(cirque_joystick_mode == 1){
         left_report.x = 0;
         left_report.y = 0;
